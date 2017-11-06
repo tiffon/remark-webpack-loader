@@ -1,0 +1,79 @@
+{
+
+  "name": "remark-webpack-loader",
+  "author": "Joe Farro <joe@jf.io>",
+  "description": "Webpack loader for remark.",
+  "version": "0.0.0",
+  "main": "dist/cjs.js",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">= 4.3 < 5.0.0 || >= 5.10"
+  },
+  "homepage": "https://github.com/tiffon/remark-webpack-loader",
+  "license": "MIT",
+  "dependencies": {
+    "loader-utils": "^1.1.0",
+    "rehype-format": "^2.2.0",
+    "rehype-raw": "^2.0.0",
+    "rehype-stringify": "^3.0.0",
+    "remark-parse": "^4.0.0",
+    "remark-rehype": "^2.0.1",
+    "unified": "^6.1.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "del-cli": "^1.1.0",
+    "eslint": "^4.10.0",
+    "eslint-config-webpack": "^1.2.5",
+    "eslint-plugin-import": "^2.8.0",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
+    "jest": "^21.2.1",
+    "lint-staged": "^4.3.0",
+    "pre-commit": "^1.2.2",
+    "raw-loader": "^0.5.1",
+    "remark": "^8.0.0",
+    "remark-autolink-headings": "^5.0.0",
+    "remark-highlight.js": "^5.0.0",
+    "remark-html": "^6.0.1",
+    "remark-slug": "^4.2.3",
+    "remark-webpack-loader-preset-xtend": "*",
+    "webpack": "^3.8.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "peerDependencies": {
+    "remark": "^8.0.0",
+    "webpack": "^2.0.0 || ^3.0.0"
+  },
+  "pre-commit": "lint-staged",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tiffon/remark-webpack-loader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tiffon/remark-webpack-loader/issues"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production babel src -d dist --ignore 'src/**/*.test.js' --copy-files",
+    "clean": "del-cli dist",
+    "lint": "eslint --cache src",
+    "lint-staged": "lint-staged",
+    "prebuild": "npm run clean",
+    "prepublish": "npm run build",
+    "start": "npm run build -- -w",
+    "test": "jest",
+    "test:coverage": "jest --collectCoverageFrom='src/**/*.js' --coverage",
+    "test:watch": "jest --watch"
+  }
+}
